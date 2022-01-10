@@ -43,11 +43,11 @@ resource "aws_ecs_service" "default" {
     type = "CODE_DEPLOY"
   }
 
-  capacity_provider_strategy {
-    capacity_provider = var.launch_type == "FARGATE" ? (var.fargate_spot ? "FARGATE_SPOT" : "FARGATE") : "${var.cluster_name}-capacity-provider"
-    weight            = 1
-    base              = 0
-  }
+#   capacity_provider_strategy {
+#     capacity_provider = var.launch_type == "FARGATE" ? (var.fargate_spot ? "FARGATE_SPOT" : "FARGATE") : "${var.cluster_name}-capacity-provider"
+#     weight            = 1
+#     base              = 0
+#   }
 
   lifecycle {
     ignore_changes = [load_balancer, task_definition, desired_count]
